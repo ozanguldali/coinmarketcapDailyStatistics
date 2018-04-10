@@ -1,0 +1,10 @@
+{
+    "dialog-state" : {
+        "caseSensitive" : false,
+        "filePatterns" : [
+        ],
+        "path" : "C:/Users/TOSHIBA/Desktop/bitirme/coinmarketcapDailyStatistics",
+        "query" : "src/run/put",
+        "regex" : false
+    }
+}

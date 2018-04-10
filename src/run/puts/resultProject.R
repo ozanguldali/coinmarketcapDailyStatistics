@@ -1,0 +1,1 @@
+View(get(coin_df_name))
