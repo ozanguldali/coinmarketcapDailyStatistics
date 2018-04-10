@@ -1,5 +1,5 @@
 {
-    "path" : "C:/Users/ASUS-/Desktop/bitirme/coinmarketcap/coinmarketcapDailyStatistics",
+    "path" : "C:/Users/ASUS-/Desktop/bitirme/coinmarketcapDailyStatistics/src/scraping",
     "sortOrder" : [
         {
             "ascending" : true,
