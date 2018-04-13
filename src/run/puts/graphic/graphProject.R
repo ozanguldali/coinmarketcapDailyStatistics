@@ -1,9 +1,21 @@
 xRange <- get(coin_df_name)$RecordDates
-priceRange <- get(coin_df_name)$Price
-marketRange <- get(coin_df_name)$MarketCap
+xLabel <- "Record Dates (days)"
+
+if ( columnName == 'Price' ) {
+  yRange <- get(coin_df_name)$Price  
+  yLabel <- "Price (dollar)"
+} else {
+  yRange <- get(coin_df_name)$MarketCap  
+  yLabel <- "MarketCap (dollar)"
+}
+
 
 par(pch=19, col="blue")
 
-plot(xrange, priceRange, xlab = "Record Dates (days)", ylab = "Price (dollar)", type = "o" )
+plot(xRange, yRange, xlab = xLabel, ylab = yLabel, type = "o" )
 
-lines(xrange, priceRange, type = "o")
+lines(xRange, yRange, type = "o")
+
+while ( repeatValue_graphAgain ) {
+  source('src/run/puts/graphic/runGraphsOnceAgain.R')
+}
