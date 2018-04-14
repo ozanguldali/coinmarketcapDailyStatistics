@@ -8,7 +8,7 @@ while (repeatValue_graph) {
   if ( ifGraph == 'yes' ) {
     repeatValue_graph <- FALSE
     source('src/gets/getDesiredGraphColumn.R')
-  } else if ( ifGraph == 'no ') {
+  } else if ( ifGraph == 'no') {
     repeatValue_graph <- FALSE
   } else {
     print("Please answer as \"yes\" or \"no\".")
