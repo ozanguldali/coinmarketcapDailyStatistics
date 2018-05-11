@@ -19,8 +19,9 @@ if ( adminProcess == "update" ) {
     
   }
   
-} else {
-  
-  source('lib/polity/loadLastWorkspace.R')
+} else if ( adminProcess == "investigate" ){
+
+    source('scripts/interfaces/admin/adminInvestigation.R')
+    source('lib/polity/loadLastWorkspace.R')
   
 }

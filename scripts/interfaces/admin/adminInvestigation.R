@@ -2,7 +2,11 @@ repeatValue_invest <- TRUE
 
 while ( repeatValue_invest ){
   
-  adminInvest <- readline( prompt = "Would you like to investigate the dataframes: ")
+  if ( adminProcess == "investigate" ){
+    adminInvest <- "yes"
+  } else if ( adminProcess == "update" ){
+    adminInvest <- readline( prompt = "Would you like to investigate the dataframes: ")
+  }
   
   if ( adminInvest == "yes" ){
     

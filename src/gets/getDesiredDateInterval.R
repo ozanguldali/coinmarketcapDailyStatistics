@@ -28,7 +28,7 @@ while ( repeatValue_date ) {
             printf("End date must be greater than start date %s\n", startDate)
           }
         } else {
-          printf("End date must be smaller than or equal to %s since I am not a fortune teller :)\n", endDate_limit)
+          printf("End date must be smaller than or equal to %s, since I am not a fortune teller :)\n", endDate_limit)
         }
       }
     }
@@ -57,7 +57,7 @@ while ( repeatValue_date ) {
             printf("Start date must be smaller today %s\n", endDate_limit)
           }
         } else {
-          printf("Start date must be greater than or equal to %s since my database create on this date :)\n", startDate_limit)
+          printf("Start date must be greater than or equal to %s, since my database create on this date :)\n", startDate_limit)
         }
       }
     }
@@ -79,7 +79,7 @@ while ( repeatValue_date ) {
             printf("End date must be greater than start date %s\n", startDate)
           }
         } else {
-          printf("End date must be smaller than or equal to %s since I am not a fortune teller :)\n", endDate_limit)
+          printf("End date must be smaller than or equal to %s, since I am not a fortune teller :)\n", endDate_limit)
         }
       }
     }
