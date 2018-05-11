@@ -3,6 +3,7 @@ library('rvest')
 
 url <- 'https://coinmarketcap.com/'
 webpage <- read_html(url)
+
 name_data_html <- html_nodes(webpage, '.currency-name-container')
 name_data <- html_text(name_data_html)
 

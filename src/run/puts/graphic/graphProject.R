@@ -11,10 +11,9 @@ if ( ifGraph == 'yes' ) {
     yLabel <- "MarketCap (dollar)"
   }
   
-  
   par(pch=19, col="blue")
-  
-  plot(xRange, yRange, xlab = xLabel, ylab = yLabel, type = "o" )
+
+  plot(xRange, yRange, xlab = xLabel, ylab = yLabel)
   
   lines(xRange, yRange, type = "o")
   
