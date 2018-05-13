@@ -1,4 +1,5 @@
 rm(list = grep("coins_df", ls(), value = TRUE, invert = TRUE))
+adminProcess <- "update"
 
 libDirNew <- toString(getwd())
 libDirNew <- paste(libDirNew, "lib", sep = "/")

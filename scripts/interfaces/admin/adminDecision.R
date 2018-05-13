@@ -3,15 +3,15 @@ repeatValue_admin <- TRUE
 while ( repeatValue_admin ) {
   
   adminDecision <- readline( prompt = "Would you like to get daily coin datas (1) or investigate the current dataframes (2): " )
-  adminDecision <- as.numeric(adminDecision)
+  # adminDecision <- as.numeric(adminDecision)
   
-  if ( adminDecision == 1 ) {
+  if ( adminDecision == "1" ) {
     
     print("Dataframes are being updated...")
     adminProcess <- 'update'
     repeatValue_admin <- FALSE
     
-  } else if ( adminDecision == 2 ) {
+  } else if ( adminDecision == "2" ) {
     
     adminProcess <- 'investigate'
     repeatValue_admin <- FALSE
