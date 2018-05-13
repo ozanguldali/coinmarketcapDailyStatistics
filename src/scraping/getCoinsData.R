@@ -1,5 +1,4 @@
 library('rvest')
-#library('ggplot2')
 
 url <- 'https://coinmarketcap.com/'
 webpage <- read_html(url)
@@ -38,6 +37,3 @@ assign(dfName, coins_df)
 daily_coins_df <- get(dfName)
 
 rm(coins_df)
-
-# str(daily_coins_df)
-# daily_coins_df
