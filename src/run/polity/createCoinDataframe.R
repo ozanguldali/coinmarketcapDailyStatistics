@@ -10,13 +10,14 @@ while( repeatValue_result ) {
     dfListDateInit <- paste( substring(paste(substring(dfList[initialValue_result], c(1,5), c(4,8)), collapse="-"), c(1,8), c(7,9)), collapse = "-" )
     marketCapInit <- get(dfList[initialValue_result])[get(dfList[initialValue_result])$CoinName==calledCoin, "MarketCap"]
     priceInit <- get(dfList[initialValue_result])[get(dfList[initialValue_result])$CoinName==calledCoin, "Price"]
-    changeRatioInit <- get(dfList[initialValue_result])[get(dfList[initialValue_result])$CoinName==calledCoin, "Volume24h"]
+    volume24hInit <- get(dfList[initialValue_result])[get(dfList[initialValue_result])$CoinName==calledCoin, "Volume24h"]
+    changeRatioInitString <- "initial"
     
     new_df <- data.frame( dfListDateInit, 
                           marketCapInit, 
                           priceInit, 
-                          changeRatioInit,
-                          "-")
+                          volume24hInit,
+                          changeRatioInitString)
     
     names(new_df) <- c("RecordDates", "MarketCap", "Price", "Volume24h", "ChangeRatio")
     
@@ -56,22 +57,22 @@ if ( length(dfList) > 1 ) {
         }
       }
       
-      changeRatioNext <- get(dfList[i])[get(dfList[i])$CoinName==calledCoin, "Price"] * 100 / pricePrevious
+      changeRatioNext <- priceNext * 100 / pricePrevious
       changeRatioNext <- as.numeric(format(round(changeRatioNext, 3), nsmall = 3))
       if(changeRatioNext > 100) {
-        changeRatioNext <- paste("+", changeRatioNext-100, sep = "")
+        changeRatioNextString <- paste("+", toString(format(changeRatioNext-100, nsmall = 3)), sep = "")
       } else if (changeRatioNext < 100) {
-        changeRatioNext <- paste("-", 100-changeRatioNext, "")
+        changeRatioNextString <- paste("-", toString(format(100-changeRatioNext, nsmall = 3)), sep = "")
       } else if ( changeRatioNext == 0) {
-        changeRatioNext <- "0"
+        changeRatioNextString <- "0"
       }
-      changeRatioNext <- paste(changeRatioNext, "%", sep = "")
+      changeRatioNextString <- paste(changeRatioNextString, "%", sep = " ")
       
       temp_df <- data.frame( RecordDates = dfListDateNext, 
                              MarketCap = marketCapNext, 
                              Price = priceNext, 
                              Volume24h = volume24hNext,
-                             changeRatio = changeRatioNext )
+                             changeRatio = changeRatioNextString )
                              
       
       names(temp_df) <- c("RecordDates", "MarketCap", "Price", "Volume24h", "ChangeRatio")
