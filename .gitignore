@@ -12,3 +12,6 @@
 /*_cache/
 /cache/
 .Rproj.user
+
+# MAC default file
+.DS_Store
