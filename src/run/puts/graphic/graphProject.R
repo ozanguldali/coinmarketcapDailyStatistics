@@ -1,39 +1,52 @@
 if ( ifGraph == 'yes' ) {
 
-  xRange <- get(coin_df_name)$RecordDates
+  xRange <- as.Date(as.character(get(coin_df_name)$RecordDates))
   xLabel <- "Record Dates (days)"
+  dateInterval <- as.numeric(xRange[length(xRange)] - xRange[1])
   
   if ( columnName == 'Price' ) {
     yRange <- get(coin_df_name)$Price  
     yLabel <- "Price (dollar)"
-    title = "Price / Record Dates Plot"
+    titlePlot = "Price / Record Dates Plot"
+    byValue <- byValue <- (max(yRange) - min(yRange)) / dateInterval
+    if (byValue > 1000)
+      byValue <- 1000
   } else {
     yRange <- get(coin_df_name)$MarketCap  
     yLabel <- "MarketCap (dollar)"
-    title = "MarketCap / Record Dates Plot"
+    titlePlot = "MarketCap / Record Dates Plot"
+    byValue <- byValue <- (max(yRange) - min(yRange)) / dateInterval
+    if (byValue > 10000000000)
+      byValue <- 10000000000
   }
+  
+  plot.new()
   
   par(cex.axis = 0.75)
   par(pch=19, col="blue")
 
-  # xSeq <- seq(as.Date(levels(xRange)[1]), as.Date(levels(xRange)[length(xRange)]), 7)
-  # ySeq <- c(min(as.integer(yRange)), max(as.integer(yRange)), 250)
+  xSeqWeek <- seq(xRange[1],xRange[length(xRange)]+7, by = 7)
+  xSeqMonth <- seq(xRange[1],xRange[length(xRange)]+7, by = 14)
+  ySeq <- seq(min(yRange)-byValue, max(yRange)+byValue, by = byValue)
   
-  plot(xRange,
-       yRange,
-       # xlim = c(as.Date(min(levels(xRange)[xRange])), as.Date(max(levels(xRange)[xRange]))),
-       # ylim = c(min(yRange), max(yRange)),
-       xlab = xLabel,
-       ylab = yLabel,
-       type = "l",
-       main = title)
+  plot.window(
+         xlim = c(xRange[1],xRange[length(xRange)]+7), xaxs = "i",
+         ylim = c(min(yRange)-byValue, max(yRange)+byValue), yaxs = "i"
+    )
   
-  # axis(side = 1, at = xSeq)
-  # axis(side = 2, at = ySeq)
-
-  lines(xRange, yRange, type = "o")
+  abline( v = xSeqMonth, col = "gray")
+  abline( h = ySeq, col = "gray")
   
-  grid(nx = length(xRange), ny = 10, col = "lightgray", lty = "dotted", lwd = par("lwd"), equilogs = TRUE)
+  axis.Date(side = 1, at = xSeqWeek)
+  axis(side = 2, at = ySeq)
+  
+  lines(xRange, yRange, lty = "solid", lwd = 2, type = "o")
+  
+  title(
+        main = titlePlot,
+        xlab = xLabel,
+        ylab = yLabel
+        )
   
   while ( repeatValue_graphAgain ) {
     source('src/run/puts/graphic/runGraphsOnceAgain.R')
