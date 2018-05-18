@@ -26,7 +26,7 @@ if ( ifGraph == 'yes' ) {
   par(pch=19, col="blue")
 
   xSeqWeek <- seq(xRange[1],xRange[length(xRange)]+7, by = 7)
-  xSeqMonth <- seq(xRange[1],xRange[length(xRange)]+7, by = 14)
+  xSeqMonth <- seq(xRange[1],xRange[length(xRange)]+7, by = 7)
   ySeq <- seq(min(yRange)-byValue, max(yRange)+byValue, by = byValue)
   
   plot.window(
