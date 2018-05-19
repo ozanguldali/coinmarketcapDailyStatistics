@@ -8,14 +8,14 @@ if ( ifGraph == 'yes' ) {
     yRange <- get(coin_df_name)$Price  
     yLabel <- "Price (dollar)"
     titlePlot = "Price / Record Dates Plot"
-    byValue <- byValue <- (max(yRange) - min(yRange)) / dateInterval
+    byValue <- (max(yRange) - min(yRange)) / dateInterval
     if (byValue > 1000)
       byValue <- 1000
   } else {
     yRange <- get(coin_df_name)$MarketCap  
     yLabel <- "MarketCap (dollar)"
     titlePlot = "MarketCap / Record Dates Plot"
-    byValue <- byValue <- (max(yRange) - min(yRange)) / dateInterval
+    byValue <- (max(yRange) - min(yRange)) / dateInterval
     if (byValue > 10000000000)
       byValue <- 10000000000
   }
