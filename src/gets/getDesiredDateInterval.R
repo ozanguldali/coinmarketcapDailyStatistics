@@ -58,7 +58,7 @@ while ( repeatValue_date ) {
       strEnd <- readline(prompt = "Please enter the end date in the format (yyyy-mm-dd): ")
       isDateBoolean_end <- IsDate( strEnd )
       isLessThen_end <- strEnd <= endDate_limit
-      isValidInterval <- startDate <= strEnd
+      isValidInterval <- startDate < strEnd
       if ( isDateBoolean_end ) {
         if (isLessThen_end) {
           if ( isValidInterval ) {
