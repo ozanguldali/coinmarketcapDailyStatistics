@@ -27,11 +27,23 @@ if ( ifGraph == 'yes' ) {
 
   xSeqWeek <- seq(xRange[1],xRange[length(xRange)]+7, by = 7)
   xSeqMonth <- seq(xRange[1],xRange[length(xRange)]+7, by = 7)
+  
   ySeq <- seq(min(yRange)-byValue, max(yRange)+byValue, by = byValue)
   
+  xlimStart <-xRange[1]
+  if(xRange[length(xRange)] < 7)
+    xlimEnd <- xRange[length(xRange)] + xRange[length(xRange)]
+  else
+    xlimEnd <- xRange[length(xRange)]+7
+  
+  ylimStart <- min(yRange) - byValue
+  if(ylimStart < 0)
+    ylimStart <- 0
+  ylimEnd <- max(yRange)+byValue
+  
   plot.window(
-         xlim = c(xRange[1],xRange[length(xRange)]+7), xaxs = "i",
-         ylim = c(min(yRange)-byValue, max(yRange)+byValue), yaxs = "i"
+         xlim = c(xlimStart,xlimEnd), xaxs = "i",
+         ylim = c(ylimStart, ylimEnd), yaxs = "i"
     )
   
   abline( v = xSeqMonth, col = "gray")
