@@ -16,7 +16,7 @@ while (repeatValue_graphAgain) {
     source('src/run/puts/graphic/graphPRoject.R')
   } else if ( onceAgain == 'no' ) {
     repeatValue_graphAgain <- FALSE
-  }else {
+  } else {
     print("Please response as \"yes\" or \"no\"...")
     repeatValue_graphAgain <- TRUE
   }

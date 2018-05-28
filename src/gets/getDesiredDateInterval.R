@@ -35,9 +35,9 @@ while ( repeatValue_date ) {
     while ( !isDateBoolean_start || !isGreaterThen_start || !isValidInterval) {
       strStart <- readline(prompt = "Please enter the start date in the format (yyyy-mm-dd): ")
       isDateBoolean_start <- IsDate( strStart )
-      isGreaterThen_start <- startDate_limit <= strStart
-      isValidInterval <- strStart <= endDate_limit
       if ( isDateBoolean_start ) {
+        isGreaterThen_start <- startDate_limit <= strStart
+        isValidInterval <- strStart <= endDate_limit
         if ( isGreaterThen_start ) {
           if ( isValidInterval ) {
             startDate <- strStart
@@ -57,9 +57,9 @@ while ( repeatValue_date ) {
     while ( !isDateBoolean_end || !isLessThen_end || !isValidInterval ) {
       strEnd <- readline(prompt = "Please enter the end date in the format (yyyy-mm-dd): ")
       isDateBoolean_end <- IsDate( strEnd )
-      isLessThen_end <- strEnd <= endDate_limit
-      isValidInterval <- startDate < strEnd
       if ( isDateBoolean_end ) {
+        isLessThen_end <- strEnd <= endDate_limit
+        isValidInterval <- startDate < strEnd
         if (isLessThen_end) {
           if ( isValidInterval ) {
             endDate <- strEnd

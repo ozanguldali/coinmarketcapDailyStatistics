@@ -24,4 +24,9 @@ if ( adminProcess == "update" ) {
     source('scripts/interfaces/admin/adminInvestigation.R')
     source('lib/polity/loadLastWorkspace.R')
   
+} else {
+  
+  print("Please check if the application has been loaded successfully!..")
+  quit(save = "no", status = 0, runLast = TRUE)
+  
 }

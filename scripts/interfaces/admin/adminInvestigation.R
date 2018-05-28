@@ -6,6 +6,11 @@ while ( repeatValue_invest ){
     adminInvest <- "yes"
   } else if ( adminProcess == "update" ){
     adminInvest <- readline( prompt = "Would you like to investigate the dataframes: ")
+  } else {
+    
+    print("Please check if the application has been loaded successfully!..")
+    quit(save = "no", status = 0, runLast = TRUE)
+    
   }
   
   if ( adminInvest == "yes" ){
