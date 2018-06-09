@@ -15,3 +15,6 @@
 
 # MAC default file
 .DS_Store
+
+# Other ignored files
+.pdf
