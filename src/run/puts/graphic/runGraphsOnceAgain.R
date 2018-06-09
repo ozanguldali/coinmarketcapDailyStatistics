@@ -1,9 +1,9 @@
 while (repeatValue_graphAgain) {
   
   if ( columnName == 'Price' ){
-    onceAgain <- readline(prompt = "One more graph; but, according to \"MarketCap\" datas?: ")
+    onceAgain <- read_line("One more graph; but, according to \"MarketCap\" datas?: ")
   } else{
-    onceAgain <- readline(prompt = "One more graph; but, according to \"Price\" datas?: ")
+    onceAgain <- read_line("One more graph; but, according to \"Price\" datas?: ")
   }
   
   if ( onceAgain == 'yes' ) {

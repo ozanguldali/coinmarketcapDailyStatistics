@@ -6,7 +6,7 @@ while ( repeatValue_coin ) {
   repeatValue_coinName <- TRUE
   initialValue_coin <- 1
   
-  calledCoin <- readline(prompt = "Enter the coin name you'd like to investigate: ")
+  calledCoin <- read_line("Enter the coin name you'd like to investigate: ")
   
   while ( repeatValue_coinName && ( initialValue_coin <= length(dfList) ) ) {
     

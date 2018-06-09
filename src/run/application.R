@@ -1,3 +1,5 @@
+source('config/formatControl.R')
+
 source('scripts/polity/loginProject.R')
 
 source('scripts/polity/loginDecision.R')

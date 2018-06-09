@@ -2,7 +2,7 @@ repeatValue_login <- TRUE
 
 while ( repeatValue_login ) {
   
-  loginType <- readline(prompt = "Would you like to login as admin or spectator: ")
+  loginType <- read_line("Would you like to login as admin or spectator: ")
   
   if ( loginType == "admin" ) {
   

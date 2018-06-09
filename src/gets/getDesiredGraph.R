@@ -3,7 +3,7 @@ repeatValue_graph <- TRUE
 while (repeatValue_graph) {
   
   ifGraph <- NULL
-  ifGraph <- readline(prompt = "Would you like to investigate the coin datas as graphics: ")
+  ifGraph <- read_line("Would you like to investigate the coin datas as graphics: ")
   
   if ( ifGraph == 'yes' ) {
     repeatValue_graph <- FALSE

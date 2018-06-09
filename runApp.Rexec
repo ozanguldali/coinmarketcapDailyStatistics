@@ -1,2 +1,3 @@
-if(!exists("foo", mode="function")) source('src/run/application.R')
+if(!exists("foo", mode="function")) 
+	source('src/run/application.R')
 break

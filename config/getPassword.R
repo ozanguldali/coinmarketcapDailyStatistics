@@ -4,7 +4,7 @@ repeatedIteration_password <- 0
 
 while ( repeatValue_password & repeatedIteration_password < 3 ) {
   
-  enteredPassw <- readline(prompt = "Please enter the password for admin user: ")
+  enteredPassw <- read_line("Please enter the password for admin user: ")
   
   if ( enteredPassw == password ) {
     
@@ -13,9 +13,7 @@ while ( repeatValue_password & repeatedIteration_password < 3 ) {
     repeatValue_password <- FALSE
     
   } else {
-    
-    printf <- function(...) cat(sprintf(...))
-    
+
     repeatedIteration_password <- repeatedIteration_password + 1
     printf("You have %d tries left\n", 3 - repeatedIteration_password)
     repeatValue_password <- TRUE

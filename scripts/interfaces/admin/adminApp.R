@@ -10,6 +10,7 @@ if ( adminProcess == "update" ) {
   
     source('src/scraping/getCoinsData.R')
     source('lib/polity/saveNewWorkspace.R')
+    source('config/formatControl.R')
     source('scripts/interfaces/admin/adminInvestigation.R')
     
   } else {

@@ -5,7 +5,7 @@ while ( repeatValue_invest ){
   if ( adminProcess == "investigate" ){
     adminInvest <- "yes"
   } else if ( adminProcess == "update" ){
-    adminInvest <- readline( prompt = "Would you like to investigate the dataframes: ")
+    adminInvest <- read_line("Would you like to investigate the dataframes: ")
   } else {
     
     print("Please check if the application has been loaded successfully!..")

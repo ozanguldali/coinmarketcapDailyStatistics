@@ -3,7 +3,7 @@ repeatValue_columnName <- TRUE
 while ( repeatValue_columnName ) {
 
   columnName <- NULL
-  columnName <- readline(prompt = "According to \"Price\" or \"MarketCap\": ")
+  columnName <- read_line("According to \"Price\" or \"MarketCap\": ")
 
   if ( columnName == "Price" || columnName == "MarketCap" ) {
     repeatValue_columnName <- FALSE

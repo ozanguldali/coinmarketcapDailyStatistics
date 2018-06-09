@@ -4,3 +4,24 @@ IsDate <- function(mydate, date.format = "%Y-%m-%d") {
            error = function(err) {FALSE}) )  
 
 }
+
+read_line <- function(promptStr) {
+  
+  if ( interactive() ) {
+    raw <- readline(prompt = promptStr)
+    return(raw)
+    rm(raw)  
+  } else {
+    cat(promptStr);
+    raw <- readLines("stdin",n=1);
+    return(raw)
+    rm(raw)
+  }
+  
+}
+
+printf <- function(...) { 
+  
+  cat(sprintf(...))
+  
+}

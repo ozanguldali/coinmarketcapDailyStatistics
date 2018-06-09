@@ -1,13 +1,10 @@
-source('config/formatControl.R')
-
 repeatValue_date <- TRUE
 
 while ( repeatValue_date ) {
   
-  strWhich <- readline(prompt = "Would you like to get the all data set or in a specific date interval data set (all / specific): ")
+  strWhich <- read_line("Would you like to get the all data set or in a specific date interval data set (all / specific): ")
 
   if ( strWhich == "all" ) {
-    printf <- function(...) cat(sprintf(...))
     
     libDir_date <- toString(getwd())
     libDir_date <- paste(libDir_date, "lib", sep = "/")
@@ -23,7 +20,6 @@ while ( repeatValue_date ) {
     repeatValue_date <- FALSE
     
   } else if ( strWhich == "specific" ) {
-    printf <- function(...) cat(sprintf(...))
     
     startDate_limit <- "2018-02-27"
     endDate_limit <- Sys.Date()
@@ -33,11 +29,11 @@ while ( repeatValue_date ) {
     isValidInterval <- FALSE
     
     while ( !isDateBoolean_start || !isGreaterThen_start || !isValidInterval) {
-      strStart <- readline(prompt = "Please enter the start date in the format (yyyy-mm-dd): ")
+      strStart <- read_line("Please enter the start date in the format (yyyy-mm-dd): ")
       isDateBoolean_start <- IsDate( strStart )
       if ( isDateBoolean_start ) {
         isGreaterThen_start <- startDate_limit <= strStart
-        isValidInterval <- strStart <= endDate_limit
+        isValidInterval <- strStart < endDate_limit
         if ( isGreaterThen_start ) {
           if ( isValidInterval ) {
             startDate <- strStart
@@ -55,7 +51,7 @@ while ( repeatValue_date ) {
     isValidInterval <- FALSE
     
     while ( !isDateBoolean_end || !isLessThen_end || !isValidInterval ) {
-      strEnd <- readline(prompt = "Please enter the end date in the format (yyyy-mm-dd): ")
+      strEnd <- read_line("Please enter the end date in the format (yyyy-mm-dd): ")
       isDateBoolean_end <- IsDate( strEnd )
       if ( isDateBoolean_end ) {
         isLessThen_end <- strEnd <= endDate_limit
