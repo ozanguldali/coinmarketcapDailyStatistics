@@ -45,25 +45,90 @@ while( repeatValue_result ) {
 }
 
 if ( length(dfList) > 1 ) {
+  
   for (i in (initialValue_result+1):length(dfList)) {
     
     if ( calledCoin %in% get(dfList[i])$CoinName ) {
     
+      repeatValue_dfDate <- TRUE
+      minus_dfDate <- 1
       dfListDateNext <- paste( substring(paste(substring(dfList[i], c(1,5), c(4,8)), collapse="-"), c(1,8), c(7,9)), collapse = "-" )
-      if(is.na(dfListDateInit))
-        dfListDateInit <- startDate  
+      while(repeatValue_dfDate){
+        if(is.na(dfListDateNext)){
+          if ( (i-minus_dfDate) > initialValue_result ){
+            dfListDateNext <- paste( substring(paste(substring(dfList[i-minus_dfDate], c(1,5), c(4,8)), collapse="-"), c(1,8), c(7,9)), collapse = "-" )
+            minus_dfDate <- minus_dfDate + 1
+          } else if ( (i-minus_dfDate) == initialValue_result ){
+            dfListDateNext <- dfListDateInit
+          } else {
+            print("FATAL ERROR!")
+            quit(save = "no", status = 0, runLast = TRUE)
+          }
+          repeatValue_dfDate <- TRUE
+        } else {
+          repeatValue_dfDate <- FALSE
+        }
+      }
       
+      repeatValue_dfMarket <- TRUE
+      minus_dfMarket <- 1
       marketCapNext <- get(dfList[i])[get(dfList[i])$CoinName==calledCoin, "MarketCap"]
-      if(is.na(marketCapNext))
-        marketCapNext <- marketCapInit
+      while(repeatValue_dfMarket){
+        if(is.na(marketCapNext)){
+          if ( (i-minus_dfMarket) > initialValue_result ){
+            marketCapNext <- get(dfList[i-minus_dfMarket])[get(dfList[i-minus_dfMarket])$CoinName==calledCoin, "MarketCap"]
+            minus_dfMarket <- minus_dfMarket + 1
+          } else if ( (i-minus_dfMarket) == initialValue_result ){
+            marketCapNext <- marketCapInit
+          } else {
+            print("FATAL ERROR!")
+            quit(save = "no", status = 0, runLast = TRUE)
+          }
+          repeatValue_dfMarket <- TRUE
+        } else {
+          repeatValue_dfMarket <- FALSE
+        }
+      }
       
+      repeatValue_dfPrice <- TRUE
+      minus_dfPrice <- 1
       priceNext <- get(dfList[i])[get(dfList[i])$CoinName==calledCoin, "Price"]
-      if(is.na(priceNext))
-        priceNext <- priceInit
+      while(repeatValue_dfPrice){
+        if(is.na(marketCapNext)){
+          if ( (i-minus_dfPrice) > initialValue_result ){
+            priceNext <- get(dfList[i-minus_dfPrice])[get(dfList[i-minus_dfPrice])$CoinName==calledCoin, "Price"]
+            minus_dfPrice <- minus_dfPrice + 1
+          } else if ( (i-minus_dfPrice) == initialValue_result ){
+            priceNext <- priceInit
+          } else {
+            print("FATAL ERROR!")
+            quit(save = "no", status = 0, runLast = TRUE)
+          }
+          repeatValue_dfPrice <- TRUE
+        } else {
+          repeatValue_dfPrice <- FALSE
+        }
+      }
       
+      repeatValue_dfVolume <- TRUE
+      minus_dfVolume <- 1
       volume24hNext <- get(dfList[i])[get(dfList[i])$CoinName==calledCoin, "Volume24h"]
-      if(is.na(volume24hNext))
-        volume24hNext <- volume24hInit
+      while(repeatValue_dfVolume){
+        if(is.na(volume24hNext)){
+          if ( (i-minus_dfVolume) > initialValue_result ){
+            volume24hNext <- get(dfList[i-minus_dfVolume])[get(dfList[i-minus_dfVolume])$CoinName==calledCoin, "Volume24h"]
+            minus_dfVolume <- minus_dfVolume + 1
+          } else if ( (i-minus_dfVolume) == initialValue_result ){
+            volume24hNext <- volume24hInit
+          } else {
+            print("FATAL ERROR!")
+            quit(save = "no", status = 0, runLast = TRUE)
+          }
+          repeatValue_dfVolume <- TRUE
+        } else {
+          repeatValue_dfVolume <- FALSE
+        }
+      }
       
       iterationPrevious <- i-1
       repeatValue_iter <- TRUE
@@ -106,5 +171,6 @@ if ( length(dfList) > 1 ) {
     }
     
   }
+  
 }
 assign(coin_df_name, new_df)

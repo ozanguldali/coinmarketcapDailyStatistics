@@ -4,19 +4,21 @@ adminProcess <- "update"
 libDirNew <- toString(getwd())
 libDirNew <- paste(libDirNew, "lib", sep = "/")
 
-previousDate <- Sys.Date() - 1
-previousDateString <- gsub("-", "", previousDate)
-
 currentDate <- Sys.Date()
 currentDateString <- gsub("-", "", currentDate)
-
-oldWorkspaceFolder <- paste(paste("20180227", previousDateString, sep = "-"), "coins_df.RData", sep = "_")
-oldWorkspaceName <- paste(libDirNew, oldWorkspaceFolder, sep = "/")
 
 newWorkspaceFolder <- paste(paste("20180227", currentDateString, sep = "-"), "coins_df.RData", sep = "_")
 newWorkspaceName <- paste(libDirNew, newWorkspaceFolder, sep = "/")
 
 save.image(toString(newWorkspaceName))
 
-if (file.exists(oldWorkspaceName))
-  file.remove(oldWorkspaceName)
+listFiles <- list.files(path = libDirNew, pattern = "\\.RData", all.files = FALSE,
+                        full.names = FALSE, recursive = FALSE,
+                        ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
+
+listFiles <- listFiles[!grepl(newWorkspaceFolder, listFiles)]
+
+for ( i in ( 1 : length(listFiles) ) ) {
+  if ( file.exists( paste(libDirNew, listFiles[i], sep = "/") ) )
+    file.remove( paste(libDirNew, listFiles[i], sep = "/") )
+}

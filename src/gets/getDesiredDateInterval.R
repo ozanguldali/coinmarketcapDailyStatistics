@@ -1,3 +1,12 @@
+libDir_date <- toString(getwd())
+libDir_date <- paste(libDir_date, "lib", sep = "/")
+
+workspaceFolder_date <- list.files(path = libDir_date, pattern = "\\.RData", all.files = FALSE,
+                                   full.names = FALSE, recursive = FALSE,
+                                   ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
+workspaceFolder_date <- toString(max(workspaceFolder_date))
+workspaceFolder_date <- gsub("_coins_df.RData", "", gsub("20180227-", "", workspaceFolder_date))
+
 repeatValue_date <- TRUE
 
 while ( repeatValue_date ) {
@@ -5,14 +14,6 @@ while ( repeatValue_date ) {
   strWhich <- read_line("Would you like to get the all data set or in a specific date interval data set (all / specific): ")
 
   if ( strWhich == "all" ) {
-    
-    libDir_date <- toString(getwd())
-    libDir_date <- paste(libDir_date, "lib", sep = "/")
-    
-    workspaceFolder_date <- list.files(path = libDir_date, pattern = "\\.RData", all.files = FALSE,
-                                      full.names = FALSE, recursive = FALSE,
-                                      ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
-    workspaceFolder_date <- gsub("_coins_df.RData", "", gsub("20180227-", "", workspaceFolder_date))
 
     startDate <- "2018-02-27"
     endDate <- paste( substring(paste(substring(workspaceFolder_date, c(1,5), c(4,8)), collapse="-"), c(1,8), c(7,9)), collapse = "-" )
@@ -22,7 +23,7 @@ while ( repeatValue_date ) {
   } else if ( strWhich == "specific" ) {
     
     startDate_limit <- "2018-02-27"
-    endDate_limit <- Sys.Date()
+    endDate_limit <- paste( substring(paste(substring(workspaceFolder_date, c(1,5), c(4,8)), collapse="-"), c(1,8), c(7,9)), collapse = "-" )
     
     isDateBoolean_start <- FALSE
     isGreaterThen_start <- FALSE

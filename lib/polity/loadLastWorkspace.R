@@ -5,8 +5,18 @@ lastWorkspaceFolder <- list.files(path = libDirectory, pattern = "\\.RData", all
            full.names = FALSE, recursive = FALSE,
            ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
 
-lastWorkspaceFolder <- toString(lastWorkspaceFolder)
+if ( length(lastWorkspaceFolder) > 0 ) {
 
-lastWorspaceName <- paste(libDirectory, lastWorkspaceFolder, sep = "/")
-
-load(toString(lastWorspaceName))
+  lastWorkspaceFolder <- toString(max(lastWorkspaceFolder))
+  
+  lastWorspaceName <- paste(libDirectory, lastWorkspaceFolder, sep = "/")
+  
+  load(toString(lastWorspaceName))
+  
+} else {
+  
+  print("FATAL ERROR!")
+  print("Your database does not include any workspace...")
+  quit(save = "no", status = 0, runLast = TRUE)
+  
+}

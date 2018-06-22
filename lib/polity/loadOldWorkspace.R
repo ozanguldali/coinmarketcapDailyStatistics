@@ -5,23 +5,33 @@ listFiles <- list.files(path = libDirOld, pattern = "\\.RData", all.files = FALS
            full.names = FALSE, recursive = FALSE,
            ignore.case = FALSE, include.dirs = FALSE, no.. = FALSE)
 
-listFiles <- toString(listFiles)
-
-previousDate <- Sys.Date() - 1
-previousDateString <- gsub("-", "", previousDate)
-
-oldWorkspaceFolder <- paste(paste("20180227", previousDateString, sep = "-"), "coins_df.RData", sep = "_")
-
-if ( oldWorkspaceFolder %in% listFiles ) {
+if ( length(listFiles) > 0 ) {
   
-  oldWorkspaceName <- paste(libDirOld, oldWorkspaceFolder, sep = "/")
-  load(toString(oldWorkspaceName))
-  keepGoing <- TRUE
+  oldFile <- toString( max(listFiles) )
+  
+  currentDate <- Sys.Date()
+  currentDateString <- gsub("-", "", currentDate)
+  
+  currentWorkspaceFolder <- paste(paste("20180227", currentDateString, sep = "-"), "coins_df.RData", sep = "_")
+  
+  if ( currentWorkspaceFolder == oldFile ) {
+    
+    print("The workspace is already up-to-date!")
+    keepGoing <- FALSE
+
+  } else {
+    
+    oldFileWorkspaceName <- paste(libDirOld, oldFile, sep = "/")
+    load(toString(oldFileWorkspaceName))
+    keepGoing <- TRUE
+    
+  }
+  
   
 } else {
   
-  print("The workspace is already up-to-date!")
-  keepGoing <- FALSE
+  print("FATAL ERROR!")
+  print("Your database does not include any workspace...")
+  quit(save = "no", status = 0, runLast = TRUE)
   
 }
-
